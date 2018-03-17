@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class RecipeController {
-
     private RecipeService recipeService;
 
     @Autowired
@@ -20,9 +19,7 @@ public class RecipeController {
 
     @RequestMapping("recipe")
     public String getRecipe(Model model) {
-        for(Recipe recipe : recipeService.getRecipes()){
-            System.out.println(recipe.getDescription());
-        }
-        return "index";
+        model.addAttribute("recipes", recipeService.getRecipes());
+        return "recipe";
     }
 }

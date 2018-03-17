@@ -9,6 +9,7 @@ import javax.persistence.Id;
 public class UnitOfMeasure {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long Id;
 
     public UnitOfMeasure() {
