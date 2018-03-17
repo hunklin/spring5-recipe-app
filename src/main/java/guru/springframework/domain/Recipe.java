@@ -32,12 +32,14 @@ public class Recipe {
     @Lob
     private Byte[] image;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "test_notes")
     private Notes notes;
 
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+//    @OneToMany(cascade = CascadeType.ALL)
     private Set<Ingredient> ingredients = new HashSet<>();
 
     public Set<Category> getCategories() {
@@ -124,6 +126,7 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
     }
 
     public Difficulty getDifficulty() {
@@ -144,5 +147,6 @@ public class Recipe {
 
     public void addIngredient(Ingredient ingredient) {
         this.ingredients.add(ingredient);
+        ingredient.setRecipe(this);
     }
 }

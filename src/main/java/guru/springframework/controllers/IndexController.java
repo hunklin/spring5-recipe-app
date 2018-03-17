@@ -22,7 +22,13 @@ public class IndexController {
     @RequestMapping({"","/","/index"})
     public String getIndexPage() {
 
-        Optional<Category> categoryOptional = categoryRepository.findByDescription("Hunk");
+        Optional<Category> categoryOptional =
+                categoryRepository.findByDescription("Hunk");
+        if (categoryOptional.isPresent())
+        { Category category = categoryOptional.get(); }
+        else
+        { throw new RuntimeException("Not Found");}
+
         Optional<UnitOfMeasure> unitOfMeasureOptional = unitOfMeasureRepository.findByDescription("Teaspoon");
 
         System.out.println("Cat Id is " + categoryOptional.get().getId());
