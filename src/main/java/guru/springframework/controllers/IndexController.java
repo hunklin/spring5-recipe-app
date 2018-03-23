@@ -19,7 +19,7 @@ public class IndexController {
         this.unitOfMeasureRepository = unitOfMeasureRepository;
     }
 
-    @RequestMapping({"","/","/index"})
+    @RequestMapping({"","/","/indexa"})
     public String getIndexPage() {
 
         Optional<Category> categoryOptional =
