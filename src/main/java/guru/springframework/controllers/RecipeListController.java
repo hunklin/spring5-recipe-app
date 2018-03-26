@@ -9,11 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class RecipeController {
+public class RecipeListController {
     private RecipeService recipeService;
 
     @Autowired
-    public RecipeController(RecipeService recipeService) {
+    public RecipeListController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
 
