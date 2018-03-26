@@ -1,17 +1,13 @@
 package guru.springframework.controllers;
 
 import guru.springframework.domain.Recipe;
-import guru.springframework.repositories.CategoryRepository;
-import guru.springframework.repositories.UnitOfMeasureRepository;
 import guru.springframework.services.RecipeService;
-import guru.springframework.services.RecipeServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
@@ -20,7 +16,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.anySet;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -29,8 +24,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-public class RecipeControllerTest {
-    RecipeController recipeController;
+public class RecipeListControllerTest {
+    RecipeListController recipeListController;
 
     @Mock
     RecipeService recipeService;
@@ -41,12 +36,12 @@ public class RecipeControllerTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        recipeController = new RecipeController(recipeService);
+        recipeListController = new RecipeListController(recipeService);
     }
 
     @Test
     public void testMockMVC() throws Exception {
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeListController).build();
         mockMvc.perform(get(new URI("/recipea")))
                 .andExpect(status().isOk())
                 .andExpect(view().name("recipe"));
@@ -65,7 +60,7 @@ public class RecipeControllerTest {
 
         ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
         //when
-        String returnValue = recipeController.getRecipe(model);
+        String returnValue = recipeListController.getRecipe(model);
 
         //then
         assertEquals(returnValue, "recipe");
