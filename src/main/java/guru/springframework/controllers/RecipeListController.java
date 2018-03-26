@@ -18,7 +18,7 @@ public class RecipeListController {
     }
 
     @RequestMapping({"recipe","recipea"})
-    public String getRecipe(Model model) {
+    public String getRecipeList(Model model) {
         model.addAttribute("recipes", recipeService.getRecipes());
         return "recipe";
     }

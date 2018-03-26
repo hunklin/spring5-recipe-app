@@ -60,7 +60,7 @@ public class RecipeListControllerTest {
 
         ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
         //when
-        String returnValue = recipeListController.getRecipe(model);
+        String returnValue = recipeListController.getRecipeList(model);
 
         //then
         assertEquals(returnValue, "recipe");
