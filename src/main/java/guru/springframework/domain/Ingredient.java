@@ -7,7 +7,9 @@ import java.math.BigDecimal;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Ingredient {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
